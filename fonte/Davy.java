@@ -12,6 +12,8 @@ public static void main(String[] args) {
     input.close();
     } catch (Exception e) {
         System.out.println("Nao foi possivel abrir o arquivo teste.davy.");
+        System.out.println("Ele existe mesmo?");
+
         e.printStackTrace();
     }
     }
