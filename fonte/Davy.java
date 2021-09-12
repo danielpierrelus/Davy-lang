@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Davy {
 public static void main(String[] args) {
     try {
-        File file = new File("teste.txt");
+        File file = new File("teste.davy");
         Scanner input = new Scanner(file);
         while (input.hasNextLine()) {
             String line = input.nextLine();
@@ -11,7 +11,7 @@ public static void main(String[] args) {
         }
     input.close();
     } catch (Exception e) {
-        System.out.println("Nao foi possivel abrir o arquivo teste.txt.");
+        System.out.println("Nao foi possivel abrir o arquivo teste.davy.");
         e.printStackTrace();
     }
     }
