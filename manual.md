@@ -10,18 +10,23 @@ string = nom
 
 
 ## os sinais das operacoes logicas;
->
-**+**    ===========> Adicão
-**-**    ===========> Substração
-**x**    ===========> Multiplicação
-**/**    ===========> Divisão
-**==**   ===========> comparação
-**>**    ===========> Maior
-**<**    ===========> Menor
-**!=**   ===========> Diferente
-**>=**   ===========> Maior ou igual
-**<=**   ===========> Menor ou igual
-**%**    ===========> Divisão sem resto
+|      Sinais                 |  Significado  |  
+| ----------------------------|:-------------:| 
+| **+**                       | Adição        |   
+| **-**                       | Subtração     |  
+| **x**                       | Multiplicação |   
+| **/**                       | Divisão       |  
+| **==**                      | Comparação    |   
+| **>**                       | maior         |  
+| **>=**                      | maior ou igual|  
+| **<**                       | menor         |  
+| **<=**                      | menor ou igual|  
+| **!=**                      | diferente     |    
+| **%**                       | s.resto(%)    |   
+
+
+
+
 
 ---------------------------------------------------------
 
