@@ -1,3 +1,3 @@
 # Davy-lang
-A) 
-B) Daniel Pierrelus
+ 
+B) Daniel Pierrelus & Kerby Lovince
