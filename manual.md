@@ -10,6 +10,7 @@ string = nom
 
 
 ## os sinais das operacoes logicas;
+>
 *+*    ===========> Adicão
 *-*    ===========> Substração
 *x*    ===========> Multiplicação
@@ -21,5 +22,6 @@ string = nom
 *>=*   ===========> Maior ou igual
 *<=*   ===========> Menor ou igual
 *%*    ===========> Divisão sem resto
+<
 ---------------------------------------------------------
 
