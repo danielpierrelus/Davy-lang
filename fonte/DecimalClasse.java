@@ -17,10 +17,12 @@ public class DecimalClasse extends Variavel {
         this.Valeur = 0;
     }
 
+    @Override
     public Float getValeur(){
         return Valeur;
     }
-
+    
+    @Override
     public void setValeur(Object Valeur){
         this.Valeur = (float) Valeur;
     }
