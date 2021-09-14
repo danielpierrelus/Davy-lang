@@ -2,7 +2,9 @@ import java.io.File;
 import java.util.Scanner;
 public class Davy {
 public static void main(String[] args) {
+
     try {
+        
         File file = new File("teste.davy");
         Scanner input = new Scanner(file);
         while (input.hasNextLine()) {
