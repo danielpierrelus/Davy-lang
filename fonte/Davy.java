@@ -6,8 +6,10 @@ public static void main(String[] args) {
             System.out.println("Deu errado! Tente outra vez: java Davy.java CaminhoDoArquivo.davy");
         }
 
-        String arquivo = args[0];
-        Lecteur scanner = new Lecteur();
-        scanner.LeTudo(arquivo);    
+        String arquivo = args[0]; //o programa que a pessoa criou;
+        Lecteur scanner = new Lecteur(); // para fazer a leitura do programa;
+        scanner.LeTudo(arquivo);    // faz a leitura
+        //aqui implemententa o processamento com o parâmetro scanner.Linhas
+
     }
 }
