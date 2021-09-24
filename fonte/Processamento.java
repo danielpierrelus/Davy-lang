@@ -10,7 +10,7 @@ public class Processamento {
     }
     
 
-    public void processa(String[] linhas){
+    public void processa(){
 
     }
 }
