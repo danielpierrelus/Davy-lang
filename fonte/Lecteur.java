@@ -2,7 +2,7 @@ package fonte;
 
 import java.io.File;
 import java.util.Scanner;
-import java.util.*;
+import java.util.Arrays;
 
 public class Lecteur {
     protected String linhas[];
@@ -37,7 +37,7 @@ public class Lecteur {
     /**
      * Faz a leitura do arquivo com o código.
      * 
-     * @param arquivo Nome do arquivo que será lido e depois passado para o vetor.
+     * @param arquivo: Nome do arquivo que será lido e depois passado para o vetor.
      */
     public void LeTudo(String arquivo) {
 

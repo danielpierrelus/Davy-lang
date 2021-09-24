@@ -9,7 +9,9 @@ public static void main(String[] args) {
         String arquivo = args[0]; //o programa que a pessoa criou;
         Lecteur scanner = new Lecteur(); // para fazer a leitura do programa;
         scanner.LeTudo(arquivo);    // faz a leitura
-        //aqui implemententa o processamento com o parâmetro scanner.Linhas
+        //Processamento processador = new Processamento();
+        //processador.processa(scanner.linhas);
 
+        
     }
 }
