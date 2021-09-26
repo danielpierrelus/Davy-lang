@@ -1,12 +1,12 @@
 package fonte;
 
-public class Processamento { 
+public class Processamento {
     public Variavel V[];
-    
+
     //public String Linhas[];
     
 
-    public Processamento() {
+    public Processamento(){
         V = new Variavel[200];
             
         };
@@ -21,6 +21,9 @@ public class Processamento {
 
             }
         }
+    }
+        //this.Linhas = VLinhas;
+        //declarar as variáveis; usar HashMap? Map?
     }
        
     
@@ -38,10 +41,7 @@ public class Processamento {
                     }
                     return true;
 
-                }
-            }
-        }
-        return false;
+    //public void processa(){
 
     }
     
