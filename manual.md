@@ -4,11 +4,10 @@
 | ---------------------------- |:----------:| 
 | **if**                       | oui        |   
 | **else**                     | sinon      |  
-| **for**                      | por        |   
 | **while**                    | pendant    |  
 | **int**                      | entier     |   
 | **double**                   | longue     |  
-| **string**                   | nom        |  
+| **string**                   | string     |  
 
 
 

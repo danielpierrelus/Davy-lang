@@ -3,11 +3,21 @@ package fonte;
 public class Processamento {
     public Variavel V[];
     public String Linhas[];
-    
+    public int qntdLinhas;
 
-    public Processamento(String[] Linhas){
+
+
+    /**
+     * Construtor.
+     * 
+     * @param Linhas Vetor que contém o programa escrito pelo Cliente.
+     */
+    public Processamento(String[] Linhas, int qntdLinhas){
           this.Linhas = Linhas;
+          this.qntdLinhas = qntdLinhas;
         };
+
+
 
     public Processamento(){
         V = new Variavel[200];
@@ -34,7 +44,7 @@ public class Processamento {
         for(int i =0; i<V.length; i++){
             if(V[i] != null){
                 if(V[i].Nom.equals(Name)){
-                    if(V[i] instanceof DoubleClasse){
+                    if(V[i] instanceof LongueClasse){
                         V[i].Valeur= Double.valueOf(Value).doubleValue();
                     }else if( V[i] instanceof EntierClasse){
                         V[i].Valeur= (int) Double.parseDouble(Value);
@@ -97,6 +107,38 @@ public class Processamento {
     
 
      public void processa(){
+        for(int i=0; i<qntdLinhas; i++) {
+            String linhaAtual = Linhas[i];
+            String tokens[] = linhaAtual.split(" ");
 
+
+            /**------Verifica se é inteiro **/
+            if("entier".equals(tokens[0])){ //declaração de inteiro;
+                //EntierTratamento(linhaAtual);
+            }
+
+            /**------Verifica se é Double **/
+            else if("longue".equals(tokens[0])){ //declaração de inteiro;
+                //LongueTratamento(linhaAtual);
+            }
+
+            /**------Verifica se é String **/
+            else if("string".equals(tokens[0])){ //declaração de inteiro;
+                //StringTratamento(linhaAtual);
+            }
+
+            /**------Verifica se é While **/
+            else if("pendant".equals(tokens[0])){ //declaração de inteiro;
+                //WhileTratamento(linhaAtual);
+            }
+
+            /**------Verifica se é IF **/
+            else if("oui".equals(tokens[0])){ //declaração de inteiro;
+                //IfTratamento(linhaAtual);
+            }
+
+
+
+        }
      }
 }

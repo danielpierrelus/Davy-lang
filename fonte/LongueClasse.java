@@ -1,9 +1,9 @@
 package fonte;
 
-public class DecimalClasse extends Variavel {
+public class LongueClasse extends Variavel {
    // public float Valeur;
 
-    public DecimalClasse(String Nom, String Valeur){
+    public LongueClasse(String Nom, String Valeur){
        // this.tipo = "Decimal";
         this.Nom = Nom;
         //verifie un nombre decimal

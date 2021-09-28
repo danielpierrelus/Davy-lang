@@ -15,7 +15,7 @@ class Davy {
 
          scanner.LeTudo(arquivo);    // faz a leitura
 
-         Processamento processador = new Processamento(scanner.linhas);
+         Processamento processador = new Processamento(scanner.linhas, scanner.qntdLinhas);
         
          processador.processa();
 

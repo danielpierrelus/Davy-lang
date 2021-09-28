@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Lecteur {
     protected String linhas[];
+    public int qntdLinhas = 0;
 
 
     /**
@@ -48,6 +49,7 @@ public class Lecteur {
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 this.linhas = novaArray(this.linhas, line, this.linhas.length);
+                qntdLinhas++;
             }
 
         input.close();
