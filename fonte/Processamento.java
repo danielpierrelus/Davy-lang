@@ -2,9 +2,12 @@ package fonte;
 
 public class Processamento {
     public Variavel V[];
-
-    //public String Linhas[];
+    public String Linhas[];
     
+
+    public Processamento(String[] Linhas){
+          this.Linhas = Linhas;
+        };
 
     public Processamento(){
         V = new Variavel[200];
@@ -93,7 +96,7 @@ public class Processamento {
     //}
     
 
-    // public void processa(){
+     public void processa(){
 
-    // }
+     }
 }
