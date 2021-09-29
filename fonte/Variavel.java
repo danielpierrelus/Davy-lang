@@ -2,13 +2,13 @@ package fonte;
 
 abstract class Variavel {
     
-    //public String tipo;
+    public String tipo;
     public String Nom;
     public Object Valeur;
 
 
-    // abstract Object getValeur();
+    abstract Object getValeur();
 
-    // abstract void setValeur(Object Valeur);
+    abstract void setValeur(Object Valeur);
 
 }

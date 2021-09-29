@@ -1,31 +1,29 @@
 package fonte;
 
 public class LongueClasse extends Variavel {
-   // public float Valeur;
+    public double Valeur;
 
-    public LongueClasse(String Nom, String Valeur){
-       // this.tipo = "Decimal";
+    public LongueClasse(String Nom, double Valeur){
+        this.tipo = "Decimal";
         this.Nom = Nom;
-        //verifie un nombre decimal
-        this.Valeur = Double.valueOf(Valeur).doubleValue();
+        this.Valeur = Valeur;
     }
 
-    // public DecimalClasse(String Nom){
-    //     this.tipo = "Decimal";
-    //     this.Nom = Nom;
-    //     //verifie un nombre decimal
-    //     this.Valeur = 0;
-    // }
+    public LongueClasse(String Nom){
+        this.tipo = "Decimal";
+        this.Nom = Nom;
+        this.Valeur = 0;
+    }
 
-    // @Override
-    // public Float getValeur(){
-    //     return Valeur;
-    // }
+    @Override
+    public Double getValeur(){
+        return Valeur;
+    }
     
-    // @Override
-    // public void setValeur(Object Valeur){
-    //     this.Valeur = (float) Valeur;
-    // }
+    @Override
+    public void setValeur(Object Valeur){
+        this.Valeur = (float) Valeur;
+    }
 
 
     

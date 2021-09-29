@@ -8,6 +8,8 @@
 | **int**                      | entier     |   
 | **double**                   | longue     |  
 | **string**                   | string     |  
+| **print**                    | imprimer   |
+| **scan**                     | lire       |    
 
 
 

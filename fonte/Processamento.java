@@ -1,7 +1,12 @@
 package fonte;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Processamento {
+
     public Variavel V[];
+    public Map<String, Variavel> variaveis;
     public String Linhas[];
     public int qntdLinhas;
 
@@ -20,10 +25,11 @@ public class Processamento {
 
 
     public Processamento(){
-        V = new Variavel[200];
-            
+        V = new Variavel[200]; 
         };
 
+
+        
     public void CriarVariavel(String g){
         for (int i = 0; i<V.length; i++){
             if (this.V[i] == null) {
@@ -35,11 +41,8 @@ public class Processamento {
             }
         }
     }
-        //this.Linhas = VLinhas;
-        //declarar as variáveis; usar HashMap? Map?
-    }
-       
-    
+
+
     public boolean ChangeVariavel(String Name, String Value){
         for(int i =0; i<V.length; i++){
             if(V[i] != null){
@@ -53,10 +56,12 @@ public class Processamento {
 
                     }
                     return true;
-
-    //public void processa(){
-
+                }
+            }
+        }
     }
+
+
     
     public String getName(String g){ // string valeur
         int count = 0;
@@ -69,6 +74,9 @@ public class Processamento {
         return vet[count];
 
     }
+
+
+
 
     public String get_StringValeur(String g){ // string valeur
         int x = 0;
@@ -83,6 +91,8 @@ public class Processamento {
 
 
     }
+
+
 
     public String getValue( String n){
         if(!n.contains("=")){ //caso seja só uma variavél sem valor. ex double j
@@ -101,12 +111,15 @@ public class Processamento {
         return Valor[1];
     }
     
-    //this.Linhas = VLinhas;
-        //declarar as variáveis; usar HashMap? Map?
-    //}
+
+
     
 
+
+
+
      public void processa(){
+
         for(int i=0; i<qntdLinhas; i++) {
             String linhaAtual = Linhas[i];
             String tokens[] = linhaAtual.split(" ");
@@ -114,17 +127,17 @@ public class Processamento {
 
             /**------Verifica se é inteiro **/
             if("entier".equals(tokens[0])){ //declaração de inteiro;
-                //EntierTratamento(linhaAtual);
+                EntierTratamento(linhaAtual);
             }
 
             /**------Verifica se é Double **/
             else if("longue".equals(tokens[0])){ //declaração de inteiro;
-                //LongueTratamento(linhaAtual);
+                LongueTratamento(linhaAtual);
             }
 
             /**------Verifica se é String **/
             else if("string".equals(tokens[0])){ //declaração de inteiro;
-                //StringTratamento(linhaAtual);
+                StringTratamento(linhaAtual);
             }
 
             /**------Verifica se é While **/
@@ -137,8 +150,105 @@ public class Processamento {
                 //IfTratamento(linhaAtual);
             }
 
+            /**------Verifica se é Print **/
+            else if("imprimer".equals(tokens[0])){ //declaração de inteiro;
+                //PrintTratamento(linhaAtual);
+            }
+
+            /**------Verifica se é Scan **/
+            else if("lire".equals(tokens[0])){ //declaração de inteiro;
+                //ScanTratamento(linhaAtual);
+            }
 
 
+            
+
+
+            
         }
      }
+
+
+     public void EntierTratamento(String linhaAtual) {
+
+        /**formatos: ''entier nomeVariavel = valor''' ou ''entier nomeVariavel''' */
+
+        EntierClasse inteiro;
+        String tokens[] = linhaAtual.split(" "); /*tokens[0] = entier*/
+        int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
+        String VarName = tokens[1];
+        
+        if (posIgual != -1) {
+
+            //faz a operação;
+            //Precisa fazer um metodo que faça a operação para o inteiro
+
+            inteiro = new EntierClasse(VarName/**,valor calculado*/);
+            variaveis.put(VarName, inteiro);
+        }
+
+        else {
+
+            inteiro = new EntierClasse(VarName);
+            variaveis.put(VarName, inteiro); //colocar na Estrutura Map que guarda todas as variáveis!
+        }
+    }
+
+
+
+
+    public void LongueTratamento(String linhaAtual) {
+
+        /**formatos: ''longue nomeVariavel = valor''' ou ''longue nomeVariavel''' */
+
+        LongueClasse longue;
+        String tokens[] = linhaAtual.split(" "); /*tokens[0] = longue*/
+        int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
+        String VarName = tokens[1];
+        
+        if (posIgual != -1) {
+
+            //faz a operação;
+            //Precisa fazer um metodo que faça a operação para o double
+
+            longue = new LongueClasse(VarName/**,valor calculado*/);
+            variaveis.put(VarName, longue);
+        }
+
+        else {
+
+            longue = new LongueClasse(VarName);
+            variaveis.put(VarName, longue); //colocar na Estrutura Map que guarda todas as variáveis!
+        }
+    }
+
+    
+
+    public void StringTratamento(String linhaAtual) {
+
+        /**formatos: ''longue nomeVariavel = valor''' ou ''longue nomeVariavel''' */
+
+        StringClasse string;
+        String tokens[] = linhaAtual.split(" "); /*tokens[0] = string*/
+        int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
+        String VarName = tokens[1];
+        
+        if (posIgual != -1) {
+
+            //faz a operação;
+            //Precisa fazer um metodo que faça a operação para a string
+
+            string = new StringClasse(VarName/**,valor calculado*/);
+            variaveis.put(VarName, string);
+        }
+
+        else {
+
+            string = new StringClasse(VarName);
+            variaveis.put(VarName, string); //colocar na Estrutura Map que guarda todas as variáveis!
+        }
+    }
+
+
+
 }
