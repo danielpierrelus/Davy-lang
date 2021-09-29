@@ -222,11 +222,11 @@ public class Processamento {
         }
     }
 
-    
+
 
     public void StringTratamento(String linhaAtual) {
 
-        /**formatos: ''longue nomeVariavel = valor''' ou ''longue nomeVariavel''' */
+        /**formatos: ''string nomeVariavel = valor''' ou ''string nomeVariavel''' */
 
         StringClasse string;
         String tokens[] = linhaAtual.split(" "); /*tokens[0] = string*/
