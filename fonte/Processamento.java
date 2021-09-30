@@ -159,6 +159,10 @@ public class Processamento {
             else if("lire".equals(tokens[0])){ //declaração de inteiro;
                 //ScanTratamento(linhaAtual);
             }
+            /**Caso não for nenhuma das opções acima quer dizer eu ele passou uma variável, logo vamos trata-la */
+            else {
+                //VariavelTratamento(LinhaAtual);
+            }
 
 
             
@@ -178,7 +182,7 @@ public class Processamento {
         int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
         String VarName = tokens[1];
         
-        if (posIgual != -1) {
+        if (posIgual != -1) { //verifica se tem o sinal de (=)
 
             //faz a operação;
             //Precisa fazer um metodo que faça a operação para o inteiro
@@ -250,5 +254,18 @@ public class Processamento {
     }
 
 
+
+    private String conteudoParenteses(String linhas) {
+        int primeiroParentese = linhas.indexOf("(");
+        int segundoParentese = linhas.lastIndexOf(")");
+
+        if (primeiroParentese == -1 || segundoParentese == -1) {
+            /**Lança uma exceção! */
+        }
+
+        String entreOsParenteses = linhas.substring(primeiroParentese+1, segundoParentese);
+
+        return entreOsParenteses;
+    }
 
 }
