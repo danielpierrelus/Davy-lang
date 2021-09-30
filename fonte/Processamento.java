@@ -182,7 +182,7 @@ public class Processamento {
         int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
         String VarName = tokens[1];
 
-        
+
         if (posIgual != -1) { //verifica se tem o sinal de (=)
             String expressao = "";
             String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
@@ -220,20 +220,29 @@ public class Processamento {
         int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
         String VarName = tokens[1];
         
-        if (posIgual != -1) {
+            if (posIgual != -1) {
+                String expressao = "";
+                String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
+                String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
+                
+                /**Forma a expressão: */
+                for (int i = 0; i<depoisDoIgual.length; i++) {
+                    expressao = expressao.concat(depoisDoIgual[i]);
+                }
 
-            //faz a operação;
-            //Precisa fazer um metodo que faça a operação para o double
+                /**Opera a expressão: */
+                
+                //double valor = 
+                
+                longue = new LongueClasse(VarName, valor);
+                variaveis.put(VarName, longue);
+            }
 
-            longue = new LongueClasse(VarName/**,valor calculado*/);
-            variaveis.put(VarName, longue);
-        }
+            else {
 
-        else {
-
-            longue = new LongueClasse(VarName);
-            variaveis.put(VarName, longue); //colocar na Estrutura Map que guarda todas as variáveis!
-        }
+                longue = new LongueClasse(VarName);
+                variaveis.put(VarName, longue); //colocar na Estrutura Map que guarda todas as variáveis!
+            }
     }
 
 
@@ -244,23 +253,21 @@ public class Processamento {
 
         StringClasse string;
         String tokens[] = linhaAtual.split(" "); /*tokens[0] = string*/
-        int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
+        String expressao[] = linhaAtual.split("=");
         String VarName = tokens[1];
         
-        if (posIgual != -1) {
+            if (linhaAtual.indexOf("=") != -1) {
+                /**a expressao está em expressao[1] */
 
-            //faz a operação;
-            //Precisa fazer um metodo que faça a operação para a string
+                //String resultado = 
+                string = new StringClasse(VarName, resultado);
+            }
 
-            string = new StringClasse(VarName/**,valor calculado*/);
-            variaveis.put(VarName, string);
-        }
+            else {
+                string = new StringClasse(VarName);
+            }
 
-        else {
-
-            string = new StringClasse(VarName);
-            variaveis.put(VarName, string); //colocar na Estrutura Map que guarda todas as variáveis!
-        }
+        variaveis.put(VarName, string);
     }
 
 
@@ -269,9 +276,9 @@ public class Processamento {
         int primeiroParentese = linhas.indexOf("(");
         int segundoParentese = linhas.lastIndexOf(")");
 
-        if (primeiroParentese == -1 || segundoParentese == -1) {
-            /**Lança uma exceção! */
-        }
+            if (primeiroParentese == -1 || segundoParentese == -1) {
+                /**Lança uma exceção! */
+            }
 
         String entreOsParenteses = linhas.substring(primeiroParentese+1, segundoParentese);
 
