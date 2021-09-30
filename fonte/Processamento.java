@@ -181,13 +181,23 @@ public class Processamento {
         String tokens[] = linhaAtual.split(" "); /*tokens[0] = entier*/
         int posIgual = linhaAtual.indexOf("="); // retorna posição do sinal igual (=)
         String VarName = tokens[1];
+
         
         if (posIgual != -1) { //verifica se tem o sinal de (=)
+            String expressao = "";
+            String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
+            String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
+            
+            /**Forma a expressão: */
+            for (int i = 0; i<depoisDoIgual.length; i++) {
+                expressao = expressao.concat(depoisDoIgual[i]);
+            }
 
-            //faz a operação;
-            //Precisa fazer um metodo que faça a operação para o inteiro
+            /**Opera a expressão: */
+            
+            //int valor = 
 
-            inteiro = new EntierClasse(VarName/**,valor calculado*/);
+            inteiro = new EntierClasse(VarName, valor);
             variaveis.put(VarName, inteiro);
         }
 
@@ -271,6 +281,10 @@ public class Processamento {
     //private void VariavelTratamento(String linhas);
 
 
+
+
+
+
     public static String[] linhaEmArray(String linhas) {
         String palavras[] = linhas.split(" ");
         String semEspacos[] = new String[0];
@@ -282,4 +296,13 @@ public class Processamento {
         }
         return semEspacos;
     }
+
+
+
+
+
+
+
+
+
 }
