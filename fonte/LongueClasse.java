@@ -4,13 +4,13 @@ public class LongueClasse extends Variavel {
     public double Valeur;
 
     public LongueClasse(String Nom, double Valeur){
-        this.tipo = "Decimal";
+        this.tipo = "longue";
         this.Nom = Nom;
         this.Valeur = Valeur;
     }
 
     public LongueClasse(String Nom){
-        this.tipo = "Decimal";
+        this.tipo = "longue";
         this.Nom = Nom;
         this.Valeur = 0;
     }
@@ -22,7 +22,7 @@ public class LongueClasse extends Variavel {
     
     @Override
     public void setValeur(Object Valeur){
-        this.Valeur = (float) Valeur;
+        this.Valeur = (double) Valeur;
     }
 
 

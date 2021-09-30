@@ -2,6 +2,7 @@ package fonte;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Processamento {
 
@@ -157,7 +158,7 @@ public class Processamento {
 
             /**------Verifica se é Scan **/
             else if("lire".equals(tokens[0])){ //declaração de inteiro;
-                //ScanTratamento(linhaAtual);
+                ScanTratamento(linhaAtual);
             }
             /**Caso não for nenhuma das opções acima quer dizer eu ele passou uma variável, logo vamos trata-la */
             else {
@@ -271,6 +272,32 @@ public class Processamento {
     }
 
 
+    public void ScanTratamento(String linhaAtual){
+
+        String variavelPassada = conteudoParenteses(linhaAtual);
+
+        if(variaveis.containsKey(variavelPassada)){
+
+            Scanner scan = new Scanner(System.in);
+            String valor = scan.nextLine();
+
+            if (variaveis.get(variavelPassada).tipo.equals("int")) {
+                variaveis.get(variavelPassada).setValeur(Integer.parseInt(valor));
+            }
+            else if (variaveis.get(variavelPassada).tipo.equals("longue")) {
+                variaveis.get(variavelPassada).setValeur(Double.parseDouble(valor));
+            }
+            else {
+                variaveis.get(variavelPassada).setValeur(valor);
+            }
+            scan.close();
+        } 
+        else {
+            /**lança exceção */
+        }
+    }
+
+
 
     private String conteudoParenteses(String linhas) {
         int primeiroParentese = linhas.indexOf("(");
@@ -292,6 +319,8 @@ public class Processamento {
 
 
 
+
+
     public static String[] linhaEmArray(String linhas) {
         String palavras[] = linhas.split(" ");
         String semEspacos[] = new String[0];
@@ -303,13 +332,6 @@ public class Processamento {
         }
         return semEspacos;
     }
-
-
-
-
-
-
-
 
 
 }

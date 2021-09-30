@@ -11,7 +11,7 @@ public class EntierClasse extends Variavel {
     }
 
     public EntierClasse(String Nom){
-        this.tipo = "Entier";
+        this.tipo = "entier";
         this.Nom = Nom;
         this.Valeur = 0;
     }
