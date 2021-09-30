@@ -268,4 +268,18 @@ public class Processamento {
         return entreOsParenteses;
     }
 
+    //private void VariavelTratamento(String linhas);
+
+
+    public static String[] linhaEmArray(String linhas) {
+        String palavras[] = linhas.split(" ");
+        String semEspacos[] = new String[0];
+
+        for (int c = 0; c < palavras.length; c++){
+            if(!" ".equals(palavras[c])) {
+                semEspacos = Lecteur.novaArray(semEspacos, palavras[c], semEspacos.length);
+            }
+        }
+        return semEspacos;
+    }
 }
