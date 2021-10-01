@@ -24,7 +24,6 @@ public class Processamento {
         };
 
 
-
     public Processamento(){
         V = new Variavel[200]; 
         };
@@ -194,8 +193,8 @@ public class Processamento {
                 expressao = expressao.concat(depoisDoIgual[i]);
             }
 
-            /**Opera a expressão: */
             
+            /**Opera a expressão: */
             //int valor = 
 
             inteiro = new EntierClasse(VarName, valor);
@@ -211,9 +210,10 @@ public class Processamento {
 
 
 
-
+    
+    
     public void LongueTratamento(String linhaAtual) {
-
+    
         /**formatos: ''longue nomeVariavel = valor''' ou ''longue nomeVariavel''' */
 
         LongueClasse longue;
