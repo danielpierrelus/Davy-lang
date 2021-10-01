@@ -1,7 +1,10 @@
 package fonte;
 
+import java.util.Map;
+
+
 public class Operation {
-    private Processamento out ;
+/*     private Processamento out ;
 
     public Operation(Processamento h){
         out = h;
@@ -84,5 +87,205 @@ public class Operation {
         String [] vet = n.split("[^a-z,^0-9,^A-Z");
         return OperacaoAritmetica(TokensAritmeticos(n), transformaDouble(vet[1]));
     }
+
+
+ */
+
     
+    /* public static String[] trataExpressao(String expressaoAntiga) {
+        String expressaoNova[] = new String[0];
+        String aux = "";
+        String analise[] = expressaoAntiga.split("");
+
+        for (int c = 0; c < analise.length; c++) {
+            if (analise[c].equals("+") || analise[c].equals("-") || analise[c].equals("*") || analise[c].equals("/") || analise[c].equals("%")) {
+
+            } else {
+                aux = aux.concat(analise[c]);
+            }
+        }
+        return expressaoNova;
+
+
+    } */
+
+
+
+
+    public static Object qualOperacao(String expressao, String tipo, Map<String, Variavel> variaveis) {
+
+        Object resultado = new Object();
+        String [] expressaoT = expressao.split("");
+
+        /**Se existe os sinais */
+        if(expressao.indexOf("+") != -1|| expressao.indexOf("-") != -1 || expressao.indexOf("*") != -1 || expressao.indexOf("/") != -1|| expressao.indexOf("%") != -1) {
+            
+            
+            if (tipo.equals("string")) {
+                return stringando(expressao, variaveis);
+            }
+            
+
+
+            for (int i = 0; i< expressaoT.length; i++) {
+                if (expressaoT[i].equals("+")){
+                    expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
+                    expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
+                    resultado = soma(expressaoT, tipo, i+1, i-1);
+                }
+            }
+
+            
+            for (int i = 0; i< expressaoT.length; i++) {
+                if (expressaoT[i].equals("-")){
+                    expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
+                    expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
+                    resultado = subtrai(expressaoT, tipo, i+1, i-1);
+                }
+            }
+
+            
+            for (int i = 0; i< expressaoT.length; i++) {
+                if (expressaoT[i].equals("*")){
+                    expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
+                    expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
+                    resultado = multiplica(expressaoT, tipo, i+1, i-1);
+                }
+            }
+
+            
+            for (int i = 0; i< expressaoT.length; i++) {
+                if (expressaoT[i].equals("/")){
+                    expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
+                    expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
+                    resultado = divide(expressaoT, tipo, i+1, i-1);
+                }
+            }
+
+            
+            for (int i = 0; i< expressaoT.length; i++) {
+                if (expressaoT[i].equals("%")){
+                    expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
+                    expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
+                    resultado = modula(expressaoT, tipo, i+1, i-1);
+                }
+            }
+        }
+
+        
+
+
+        return resultado;
+    }
+
+
+
+   /**
+     * Verifica se o que a pessoa digitou é uma variável ou simplesmente um valor.
+     * 
+     * @param valor valor ou variavel.
+     */
+    private static String ehVariavel(String valor, Map<String, Variavel> variaveis, String tipo){
+        if(variaveis.containsKey(valor)) {
+            return variaveis.get(valor).getValeur().toString();
+        }
+        return valor;
+    }
+
+
+
+
+    public static Object soma(String[] valores, String tipo, int antecessor, int sucessor){
+
+        if(tipo.equals("longue")){
+            double result = Double.parseDouble(valores[antecessor]) + Double.parseDouble(valores[sucessor]);
+            return result;
+        }
+
+        if(tipo.equals("entier")){
+            int result = Integer.parseInt(valores[antecessor]) + Integer.parseInt(valores[sucessor]);
+            return result;
+            
+        }
+        return 0;
+    }
+
+
+
+    public static Object subtrai(String[] valores, String tipo, int antecessor, int sucessor){
+
+        if(tipo.equals("longue")){
+            double result = Double.parseDouble(valores[antecessor]) - Double.parseDouble(valores[sucessor]);
+            return result;
+        }
+        if(tipo.equals("entier")){
+            int result = Integer.parseInt(valores[antecessor]) - Integer.parseInt(valores[sucessor]);
+            return result;
+            
+        }
+        return 0;
+    }
+
+
+    public static Object divide(String[] valores, String tipo, int antecessor, int sucessor){
+
+        if(tipo.equals("longue")){
+            double result = Double.parseDouble(valores[antecessor]) / Double.parseDouble(valores[sucessor]);
+            return result;
+        }
+        if(tipo.equals("entier")){
+            int result = Integer.parseInt(valores[antecessor]) / Integer.parseInt(valores[sucessor]);
+            return result;
+            
+        }
+        return 0;
+    }
+
+    public static Object multiplica(String[] valores, String tipo, int antecessor, int sucessor){
+
+        if(tipo.equals("longue")){
+            double result = Double.parseDouble(valores[antecessor]) * Double.parseDouble(valores[sucessor]);
+            return result;
+        }
+        if(tipo.equals("entier")){
+            int result = Integer.parseInt(valores[antecessor]) * Integer.parseInt(valores[sucessor]);
+            return result;
+            
+        }
+        return 0;
+    }
+
+    public static Object modula(String[] valores, String tipo, int antecessor, int sucessor){
+
+        if(tipo.equals("longue")){
+            double result = Double.parseDouble(valores[antecessor]) % Double.parseDouble(valores[sucessor]);
+            return result;
+        }
+        if(tipo.equals("entier")){
+            int result = Integer.parseInt(valores[antecessor]) % Integer.parseInt(valores[sucessor]);
+            return result;
+            
+        }
+        return 0;
+    }
+
+    public static String stringando(String expressao, Map<String, Variavel> variaveis) {
+        String resultado = "";
+        boolean check = true;
+
+        for (int i = 0; i < expressao.length(); i++) {
+            if(expressao.charAt(i) == '\"'){
+                check = !check;
+            }
+            if(expressao.charAt(i) == '+' && check == true) {
+                String antecessor = expressao.substring(0, i);
+                String sucessor = expressao.substring(i+1, expressao.length());
+                resultado = antecessor + sucessor;
+                return resultado;
+            }
+
+        }
+        return expressao.replace("\"", "");
+
+    }
 }

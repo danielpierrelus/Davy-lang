@@ -24,7 +24,7 @@ public class Processamento {
         };
 
 
-    public Processamento(){
+  /*   public Processamento(){
         V = new Variavel[200]; 
         };
 
@@ -109,7 +109,7 @@ public class Processamento {
             Valor [1]= VariavelLocalisation(valor[1]); // se tiver uma variavel vai retorna o valor dela
         }
         return Valor[1];
-    }
+    } */
     
 
 
@@ -195,7 +195,7 @@ public class Processamento {
 
             
             /**Opera a expressão: */
-            //int valor = 
+            int valor = (int) Operation.qualOperacao(expressao, "entier", variaveis);
 
             inteiro = new EntierClasse(VarName, valor);
             variaveis.put(VarName, inteiro);
@@ -233,7 +233,7 @@ public class Processamento {
 
                 /**Opera a expressão: */
                 
-                //double valor = 
+                double valor = (double) Operation.qualOperacao(expressao, "longue", variaveis);
                 
                 longue = new LongueClasse(VarName, valor);
                 variaveis.put(VarName, longue);
@@ -260,7 +260,7 @@ public class Processamento {
             if (linhaAtual.indexOf("=") != -1) {
                 /**a expressao está em expressao[1] */
 
-                //String resultado = 
+                String resultado = (String) Operation.qualOperacao(expressao[2], "string", variaveis);
                 string = new StringClasse(VarName, resultado);
             }
 
@@ -298,7 +298,11 @@ public class Processamento {
     }
 
 
-
+    /**
+     * Retorna conteudo que esta entre parenteses
+     * 
+     * @param linhas Vetor que procuraremos parenteses;
+     */
     private String conteudoParenteses(String linhas) {
         int primeiroParentese = linhas.indexOf("(");
         int segundoParentese = linhas.lastIndexOf(")");
@@ -320,9 +324,13 @@ public class Processamento {
 
 
 
-
+    /**
+     * Pega uma linha, retira os espaços, e coloca numa array;
+     * 
+     * @param linhas linha a ser tratada
+     */
     public static String[] linhaEmArray(String linhas) {
-        String palavras[] = linhas.split(" ");
+        String palavras[] = linhas.split("");
         String semEspacos[] = new String[0];
 
         for (int c = 0; c < palavras.length; c++){
