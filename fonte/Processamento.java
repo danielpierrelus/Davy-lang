@@ -11,8 +11,6 @@ public class Processamento {
     public String Linhas[];
     public int qntdLinhas;
 
-
-
     /**
      * Construtor.
      * 
@@ -111,12 +109,6 @@ public class Processamento {
         return Valor[1];
     }
     
-
-
-    
-
-
-
 
      public void processa(){
 
