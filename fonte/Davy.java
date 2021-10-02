@@ -1,5 +1,6 @@
 package fonte;
 
+
 public class Davy {
     public static void main(String[] args) {
         
@@ -11,16 +12,10 @@ public class Davy {
          }
 
         String arquivo = args[0]; //o programa que a pessoa criou;
-
-        Lecteur lecteur = new Lecteur(); // para fazer a leitura do programa;
-         
-        lecteur.LeTudo(arquivo);    // faz a leitura
-         
-        Processamento processador = new Processamento(lecteur.linhas, lecteur.qntdLinhas);
-         
-        processador.processa();
-
-         //lecteur.linhas, lecteur.qntdLinhas
+        Lecteur l = new Lecteur(); // para fazer a leitura do programa;
+        l.leTudo(arquivo);    // faz a leitura e guarda em l.linhas[]
+        Processamento p = new Processamento(l.linhas, l.qntdLinhas);
+        p.Processa();
 
 
      }

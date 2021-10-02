@@ -1,12 +1,12 @@
 package fonte;
 
-//import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Processamento {
 
-    public Variavel V[];
+    //public Variavel V[];
     public Map<String, Variavel> variaveis;
     public String Linhas[];
     public int qntdLinhas;
@@ -18,10 +18,15 @@ public class Processamento {
      * 
      * @param Linhas Vetor que contém o programa escrito pelo Cliente.
      */
-    public Processamento(String[] Linhas, int qntdLinhas){
+    public Processamento(String Linhas[], int qntdLinhas){
           this.Linhas = Linhas;
           this.qntdLinhas = qntdLinhas;
+          this.variaveis = new LinkedHashMap<>();
         };
+
+
+
+
 
 
   /*   public Processamento(){
@@ -118,21 +123,23 @@ public class Processamento {
 
 
 
-     public void processa(){
+     public void Processa(){
 
         for(int i=0; i<qntdLinhas; i++) {
             String linhaAtual = Linhas[i];
-            String tokens[] = linhaAtual.split("");
+            String tokens[] = linhaAtual.split(" ");
 
 
             /**------Verifica se é inteiro **/
             if("entier".equals(tokens[0])){ //declaração de inteiro;
                 EntierTratamento(linhaAtual);
+                System.out.println("pegou entier");
             }
 
             /**------Verifica se é Double **/
             else if("longue".equals(tokens[0])){ //declaração de inteiro;
                 LongueTratamento(linhaAtual);
+                System.out.println("pegou longue");
             }
 
             /**------Verifica se é String **/
@@ -158,9 +165,14 @@ public class Processamento {
             /**------Verifica se é Scan **/
             else if("lire".equals(tokens[0])){ //declaração de inteiro;
                 ScanTratamento(linhaAtual);
+                System.out.println("pegou lire");
             }
             /**Caso não for nenhuma das opções acima quer dizer eu ele passou uma variável, logo vamos trata-la */
             else {
+                System.out.println("caiu no else");
+                System.out.println(variaveis.get("var1").getValeur());
+
+
                 //VariavelTratamento(LinhaAtual);
             }
 
@@ -185,27 +197,24 @@ public class Processamento {
 
         if (posIgual != -1) { //verifica se tem o sinal de (=)
             String expressao = "";
-            //String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
             String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
             
             /**Forma a expressão: */
             for (int i = 0; i<depoisDoIgual.length; i++) {
                 expressao = expressao.concat(depoisDoIgual[i]);
-            }
 
-            
+            }
             /**Opera a expressão: */
             int valor = (int) Operation.qualOperacao(expressao, "entier", variaveis);
-
             inteiro = new EntierClasse(VarName, valor);
-            variaveis.put(VarName, inteiro);
         }
 
         else {
 
             inteiro = new EntierClasse(VarName);
-            variaveis.put(VarName, inteiro); //colocar na Estrutura Map que guarda todas as variáveis!
+            
         }
+        variaveis.put(inteiro.Nom, inteiro); //colocar na Estrutura Map que guarda todas as variáveis!
     }
 
 
@@ -223,7 +232,6 @@ public class Processamento {
         
             if (posIgual != -1) {
                 String expressao = "";
-                //String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
                 String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
                 
                 /**Forma a expressão: */
@@ -236,14 +244,12 @@ public class Processamento {
                 double valor = (double) Operation.qualOperacao(expressao, "longue", variaveis);
                 
                 longue = new LongueClasse(VarName, valor);
-                variaveis.put(VarName, longue);
             }
 
             else {
-
                 longue = new LongueClasse(VarName);
-                variaveis.put(VarName, longue); //colocar na Estrutura Map que guarda todas as variáveis!
             }
+            variaveis.put(longue.Nom, longue); //colocar na Estrutura Map que guarda todas as variáveis!
     }
 
 
@@ -260,7 +266,7 @@ public class Processamento {
             if (linhaAtual.indexOf("=") != -1) {
                 /**a expressao está em expressao[1] */
 
-                String resultado = (String) Operation.qualOperacao(expressao[2], "string", variaveis);
+                String resultado = (String) Operation.qualOperacao(expressao[1], "string", variaveis);
                 string = new StringClasse(VarName, resultado);
             }
 
@@ -281,7 +287,7 @@ public class Processamento {
             Scanner scan = new Scanner(System.in);
             String valor = scan.nextLine();
 
-            if (variaveis.get(variavelPassada).tipo.equals("int")) {
+            if (variaveis.get(variavelPassada).tipo.equals("entier")) {
                 variaveis.get(variavelPassada).setValeur(Integer.parseInt(valor));
             }
             else if (variaveis.get(variavelPassada).tipo.equals("longue")) {
@@ -316,7 +322,6 @@ public class Processamento {
         return entreOsParenteses;
     }
 
-    //private void VariavelTratamento(String linhas);
 
 
 
@@ -355,36 +360,7 @@ public class Processamento {
         if(variaveis.containsKey(variavelPassada)){
 
             System.out.println(variaveis.get(variavelPassada).getValeur());
-/* 
-            if (variaveis.get(variavelPassada).tipo.equals("int")) {
-                variaveis.get(variavelPassada).setValeur(Integer.parseInt(valor));
-            }
-            else if (variaveis.get(variavelPassada).tipo.equals("longue")) {
-                variaveis.get(variavelPassada).setValeur(Double.parseDouble(valor));
-            }
-            else {
-                variaveis.get(variavelPassada).setValeur(valor);
-            }
-            scan.close(); */
+
         } 
-        else {
-            /**lança exceção */
-        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

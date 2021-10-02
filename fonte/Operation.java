@@ -4,6 +4,8 @@ import java.util.Map;
 
 
 public class Operation {
+
+    
 /*     private Processamento out ;
 
     public Operation(Processamento h){
@@ -115,7 +117,9 @@ public class Operation {
     public static Object qualOperacao(String expressao, String tipo, Map<String, Variavel> variaveis) {
 
         Object resultado = new Object();
-        String [] expressaoT = expressao.split("");
+        Object resultadoTemp = new Object();
+        String[] aux = new String[]{""};
+        String [] expressaoT = expressao.split(" ");
 
         /**Se existe os sinais */
         if(expressao.indexOf("+") != -1|| expressao.indexOf("-") != -1 || expressao.indexOf("*") != -1 || expressao.indexOf("/") != -1|| expressao.indexOf("%") != -1) {
@@ -131,7 +135,8 @@ public class Operation {
                 if (expressaoT[i].equals("+")){
                     expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
                     expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
-                    resultado = soma(expressaoT, tipo, i+1, i-1);
+                    resultadoTemp = soma(expressaoT, tipo, i+1, i-1);
+                    aux[0] = resultadoTemp.toString();
                 }
             }
 
@@ -140,7 +145,8 @@ public class Operation {
                 if (expressaoT[i].equals("-")){
                     expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
                     expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
-                    resultado = subtrai(expressaoT, tipo, i+1, i-1);
+                    resultadoTemp = subtrai(expressaoT, tipo, i+1, i-1);
+                    aux[0] = resultadoTemp.toString();
                 }
             }
 
@@ -149,7 +155,8 @@ public class Operation {
                 if (expressaoT[i].equals("*")){
                     expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
                     expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
-                    resultado = multiplica(expressaoT, tipo, i+1, i-1);
+                    resultadoTemp = multiplica(expressaoT, tipo, i+1, i-1);
+                    aux[0] = resultadoTemp.toString();
                 }
             }
 
@@ -158,7 +165,8 @@ public class Operation {
                 if (expressaoT[i].equals("/")){
                     expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
                     expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
-                    resultado = divide(expressaoT, tipo, i+1, i-1);
+                    resultadoTemp = divide(expressaoT, tipo, i+1, i-1);
+                    aux[0] = resultadoTemp.toString();
                 }
             }
 
@@ -167,13 +175,20 @@ public class Operation {
                 if (expressaoT[i].equals("%")){
                     expressaoT[i+1] = ehVariavel(expressaoT[i+1], variaveis, tipo);
                     expressaoT[i-1] = ehVariavel(expressaoT[i-1], variaveis, tipo);
-                    resultado = modula(expressaoT, tipo, i+1, i-1);
+                    resultadoTemp = modula(expressaoT, tipo, i+1, i-1);
+                    aux[0] = resultadoTemp.toString();
                 }
             }
+        } else { //so tem um valor e n tem nenhuma expressão
+            aux[0] = Operation.ehVariavel(aux[0], variaveis, tipo);
+            aux[0] = expressao.trim();
         }
-
-        
-
+        if(tipo.equals("longue")){
+            resultado = Double.parseDouble(aux[0]);
+        }
+        if(tipo.equals("entier")){
+            resultado = Integer.parseInt(aux[0]);
+        }
 
         return resultado;
     }

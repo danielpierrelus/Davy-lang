@@ -1,4 +1,2 @@
 entier x = 1
 entier y = 3
-imprimer(x)
-imprimer(y)

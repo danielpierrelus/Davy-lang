@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.*;
 
 public class Lecteur {
-    public String linhas[];
+    protected String linhas[];
     public int qntdLinhas = 0;
 
 
@@ -40,7 +40,7 @@ public class Lecteur {
      * 
      * @param arquivo Nome do arquivo que será lido e depois passado para o vetor.
      */
-    public void LeTudo(String arquivo) {
+    public void leTudo(String arquivo) {
 
         try {
             this.linhas = new String[0];
