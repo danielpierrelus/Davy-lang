@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.*;
 
 public class Lecteur {
-    protected String linhas[];
+    public String linhas[];
     public int qntdLinhas = 0;
 
 
@@ -51,8 +51,7 @@ public class Lecteur {
                 this.linhas = novaArray(this.linhas, line, this.linhas.length);
                 qntdLinhas++;
             }
-
-        input.close();
+            input.close();
 
         } catch (Exception e) {
 

@@ -1,6 +1,6 @@
 package fonte;
 
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ public class Processamento {
 
     public Variavel V[];
     public Map<String, Variavel> variaveis;
-    public String Linhas[];
+    //public String Linhas[];
     public int qntdLinhas;
 
 
@@ -18,10 +18,10 @@ public class Processamento {
      * 
      * @param Linhas Vetor que contém o programa escrito pelo Cliente.
      */
-    public Processamento(String[] Linhas, int qntdLinhas){
+    /* public Processamento(String[] Linhas, int qntdLinhas){
           this.Linhas = Linhas;
           this.qntdLinhas = qntdLinhas;
-        };
+        }; */
 
 
   /*   public Processamento(){
@@ -118,7 +118,7 @@ public class Processamento {
 
 
 
-     public void processa(){
+     public void processa(String[] Linhas){
 
         for(int i=0; i<qntdLinhas; i++) {
             String linhaAtual = Linhas[i];
@@ -152,7 +152,7 @@ public class Processamento {
 
             /**------Verifica se é Print **/
             else if("imprimer".equals(tokens[0])){ //declaração de inteiro;
-                //PrintTratamento(linhaAtual);
+                ImprimerTratamento(linhaAtual);
             }
 
             /**------Verifica se é Scan **/
@@ -185,7 +185,7 @@ public class Processamento {
 
         if (posIgual != -1) { //verifica se tem o sinal de (=)
             String expressao = "";
-            String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
+            //String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
             String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
             
             /**Forma a expressão: */
@@ -223,7 +223,7 @@ public class Processamento {
         
             if (posIgual != -1) {
                 String expressao = "";
-                String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
+                //String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
                 String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
                 
                 /**Forma a expressão: */
@@ -340,6 +340,51 @@ public class Processamento {
         }
         return semEspacos;
     }
+
+
+
+
+
+
+
+
+    public void ImprimerTratamento(String linhaAtual){
+
+        String variavelPassada = conteudoParenteses(linhaAtual);
+
+        if(variaveis.containsKey(variavelPassada)){
+
+            System.out.println(variaveis.get(variavelPassada).getValeur());
+/* 
+            if (variaveis.get(variavelPassada).tipo.equals("int")) {
+                variaveis.get(variavelPassada).setValeur(Integer.parseInt(valor));
+            }
+            else if (variaveis.get(variavelPassada).tipo.equals("longue")) {
+                variaveis.get(variavelPassada).setValeur(Double.parseDouble(valor));
+            }
+            else {
+                variaveis.get(variavelPassada).setValeur(valor);
+            }
+            scan.close(); */
+        } 
+        else {
+            /**lança exceção */
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

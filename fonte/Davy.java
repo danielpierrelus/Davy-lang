@@ -1,23 +1,26 @@
 package fonte;
 
-class Davy {
+public class Davy {
     public static void main(String[] args) {
         
          if (args.length != 1) { //verifica se foi passado corretamente o parâmetro/programa;
 
-             System.out.println("Deu errado! Tente outra vez: java Davy.java CaminhoDoArquivo.davy");
+             System.out.println("Deu errado! Tente outra vez: java Davy.java CaminhoDoArquivo.Davy");
+             return;
 
          }
 
          String arquivo = args[0]; //o programa que a pessoa criou;
 
-         Lecteur scanner = new Lecteur(); // para fazer a leitura do programa;
+         Lecteur lecteur = new Lecteur(); // para fazer a leitura do programa;
+         
+         Processamento processador = new Processamento();
 
-         scanner.LeTudo(arquivo);    // faz a leitura
+         lecteur.LeTudo(arquivo);    // faz a leitura
+         
+         processador.processa(lecteur.linhas);
 
-         Processamento processador = new Processamento(scanner.linhas, scanner.qntdLinhas);
-        
-         processador.processa();
+         //lecteur.linhas, lecteur.qntdLinhas
 
 
      }
