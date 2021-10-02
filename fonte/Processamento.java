@@ -8,7 +8,7 @@ public class Processamento {
 
     public Variavel V[];
     public Map<String, Variavel> variaveis;
-    //public String Linhas[];
+    public String Linhas[];
     public int qntdLinhas;
 
 
@@ -18,10 +18,10 @@ public class Processamento {
      * 
      * @param Linhas Vetor que contém o programa escrito pelo Cliente.
      */
-    /* public Processamento(String[] Linhas, int qntdLinhas){
+    public Processamento(String[] Linhas, int qntdLinhas){
           this.Linhas = Linhas;
           this.qntdLinhas = qntdLinhas;
-        }; */
+        };
 
 
   /*   public Processamento(){
@@ -118,11 +118,11 @@ public class Processamento {
 
 
 
-     public void processa(String[] Linhas){
+     public void processa(){
 
         for(int i=0; i<qntdLinhas; i++) {
             String linhaAtual = Linhas[i];
-            String tokens[] = linhaAtual.split(" ");
+            String tokens[] = linhaAtual.split("");
 
 
             /**------Verifica se é inteiro **/

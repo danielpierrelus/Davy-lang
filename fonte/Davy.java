@@ -10,15 +10,15 @@ public class Davy {
 
          }
 
-         String arquivo = args[0]; //o programa que a pessoa criou;
+        String arquivo = args[0]; //o programa que a pessoa criou;
 
-         Lecteur lecteur = new Lecteur(); // para fazer a leitura do programa;
+        Lecteur lecteur = new Lecteur(); // para fazer a leitura do programa;
          
-         Processamento processador = new Processamento();
-
-         lecteur.LeTudo(arquivo);    // faz a leitura
+        lecteur.LeTudo(arquivo);    // faz a leitura
          
-         processador.processa(lecteur.linhas);
+        Processamento processador = new Processamento(lecteur.linhas, lecteur.qntdLinhas);
+         
+        processador.processa();
 
          //lecteur.linhas, lecteur.qntdLinhas
 

@@ -61,6 +61,7 @@ public class Lecteur {
             e.printStackTrace();
 
         }
+        ImprimeLinhas();
     }
     
 }
