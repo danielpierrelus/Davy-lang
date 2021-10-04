@@ -16,7 +16,8 @@ public class Processamento {
     /**
      * Construtor.
      * 
-     * @param Linhas Vetor que contém o programa escrito pelo Cliente.
+     * @param Linhas -> Vetor que contém o programa escrito pelo Cliente.
+     * @param qntdLinhas -> contém a quantidades de linhas do programa.
      */
     public Processamento(String Linhas[], int qntdLinhas){
           this.Linhas = Linhas;
@@ -122,7 +123,10 @@ public class Processamento {
 
 
 
-
+    /**
+     * Faz o processamento linha por linha
+     * 
+     */
      public void Processa(){
 
         for(int i=0; i<qntdLinhas; i++) {
@@ -133,19 +137,16 @@ public class Processamento {
             /**------Verifica se é inteiro **/
             if("entier".equals(tokens[0])){ //declaração de inteiro;
                 EntierTratamento(linhaAtual);
-                System.out.println("pegou entier");
             }
 
             /**------Verifica se é Double **/
             else if("longue".equals(tokens[0])){ //declaração de inteiro;
                 LongueTratamento(linhaAtual);
-                System.out.println("pegou longue");
             }
 
             /**------Verifica se é String **/
             else if("string".equals(tokens[0])){ //declaração de inteiro;
                 StringTratamento(linhaAtual);
-                System.out.println("pegou string");
             }
 
             /**------Verifica se é While **/
@@ -161,20 +162,14 @@ public class Processamento {
             /**------Verifica se é Print **/
             else if("imprimer".equals(tokens[0])){ //declaração de inteiro;
                 ImprimerTratamento(linhaAtual);
-                System.out.println("pegou imprimer");
             }
 
             /**------Verifica se é Scan **/
             else if("lire".equals(tokens[0])){ //declaração de inteiro;
                 ScanTratamento(linhaAtual);
-                System.out.println("pegou lire");
             }
             /**Caso não for nenhuma das opções acima quer dizer eu ele passou uma variável, logo vamos trata-la */
             else {
-                System.out.println("caiu no else");
-                System.out.println(variaveis.get("z").getValeur().toString());
-
-
                 //VariavelTratamento(LinhaAtual);
             }
 
@@ -186,7 +181,11 @@ public class Processamento {
         }
      }
 
-
+    /**
+     * Faz o tratamento de variáveis do tipo Entier
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
      public void EntierTratamento(String linhaAtual) {
 
         /**formatos: ''entier nomeVariavel = valor''' ou ''entier nomeVariavel''' */
@@ -222,7 +221,11 @@ public class Processamento {
 
 
     
-    
+    /**
+     * Faz o tratamento de variáveis do tipo Longue
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
     public void LongueTratamento(String linhaAtual) {
     
         /**formatos: ''longue nomeVariavel = valor''' ou ''longue nomeVariavel''' */
@@ -255,7 +258,11 @@ public class Processamento {
     }
 
 
-
+    /**
+     * Faz o tratamento de variáveis do tipo String
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
     public void StringTratamento(String linhaAtual) {
 
         /**formatos: ''string nomeVariavel = valor''' ou ''string nomeVariavel''' */
@@ -279,7 +286,11 @@ public class Processamento {
         variaveis.put(VarName, string);
     }
 
-
+    /**
+     * Faz o tratamento de leitura do teclado
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
     public void ScanTratamento(String linhaAtual){
 
         String variavelPassada = conteudoParenteses(linhaAtual);
@@ -309,7 +320,7 @@ public class Processamento {
     /**
      * Retorna conteudo que esta entre parenteses
      * 
-     * @param linhas Vetor que procuraremos parenteses;
+     * @param linhas -> vetor que procuraremos parenteses;
      */
     private String conteudoParenteses(String linhas) {
         int primeiroParentese = linhas.indexOf("(");
@@ -353,8 +364,30 @@ public class Processamento {
 
 
 
+/**O QUE FALTA FAZER: */
+/**
+ * - PENDANT; (LAÇO/WHILE)
+ * - OUI - SINON; (IF/ELSE)
+ * - IMPRIMER; (PRINT)
+ * - TESTAR OPERAÇÕES;
+ * - TESTAR LIRE; (SCAN)
+ * - IMPLEMENTAR OPERAÇÃO DE INCREMENTO+1 E REDUZ-1; (++,--)
+ * - LANÇAMENTO DE EXCEÇÕES;
+ * - TRATAMENTO CASO O CLIENTE PASSE UMA VARIÁVEL (ALTERAÇÃO DE VALOR DE VARIÁVEIS COM E SEM OPERAÇÃO)
+ * - RESOLVER PROBLEMA DE COMPILAÇÃO; SYMBOM NOT FOUND;
+ * 
+ */
 
 
+/**NAO ESTA PRONTO:::: */
+
+
+
+    /**
+     * Faz o tratamento de impressão na tela
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
     public void ImprimerTratamento(String linhaAtual){
 
         String variavelPassada = conteudoParenteses(linhaAtual);

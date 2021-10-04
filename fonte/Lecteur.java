@@ -12,11 +12,10 @@ public class Lecteur {
     /**
      * Adiciona um novo elemento na array.
      * 
-     * @param original array onde será adicionado um novo elemento.
-     * @param novo novo elemento que será adicionado.
-     * @param tamanho tamanho do array original.
+     * @param original -> array onde será adicionado um novo elemento.
+     * @param novo -> novo elemento que será adicionado.
+     * @param tamanho -> tamanho do array original.
      */
-
     public static String[] novaArray(String[] original, String novo, int tamanho){
         String[] NArray = Arrays.copyOf(original, tamanho+1);
         NArray[NArray.length-1] = novo;

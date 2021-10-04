@@ -113,7 +113,13 @@ public class Operation {
 
 
 
-
+    /**
+     * pré-resolve as operações
+     * 
+     * @param expressao -> string que contém a expressao que sera resolvida.
+     * @param tipo -> tipo da Variável que será resolvida .
+     * @param variaveis ->  estrutura de dados que contém todas as variáveis.
+     */
     public static Object qualOperacao(String expressao, String tipo, Map<String, Variavel> variaveis) {
 
         Object resultado = new Object();
@@ -198,7 +204,9 @@ public class Operation {
    /**
      * Verifica se o que a pessoa digitou é uma variável ou simplesmente um valor.
      * 
-     * @param valor valor ou variavel.
+     * @param valor -> valor ou variavel.
+     * @param variaveis -> estrutura de dados que armezena as variaveis
+     * @param tipo -> tipo da variavel.
      */
     private static String ehVariavel(String valor, Map<String, Variavel> variaveis, String tipo){
         if(variaveis.containsKey(valor)) {
@@ -209,7 +217,14 @@ public class Operation {
 
 
 
-
+    /**
+     * Opera soma
+     * 
+     * @param valores -> onde está a expressão
+     * @param tipo -> tipo da variavel.
+     * @param antecessor -> valor que está antes do operador
+     * @param sucessor -> valor que está após o operador
+     */
     public static Object soma(String[] valores, String tipo, int antecessor, int sucessor){
 
         if(tipo.equals("longue")){
@@ -226,7 +241,14 @@ public class Operation {
     }
 
 
-
+    /**
+     * Opera subtração
+     * 
+     * @param valores -> onde está a expressão
+     * @param tipo -> tipo da variavel.
+     * @param antecessor -> valor que está antes do operador
+     * @param sucessor -> valor que está após o operador
+     */
     public static Object subtrai(String[] valores, String tipo, int antecessor, int sucessor){
 
         if(tipo.equals("longue")){
@@ -241,7 +263,14 @@ public class Operation {
         return 0;
     }
 
-
+    /**
+     * Opera divisão
+     * 
+     * @param valores -> onde está a expressão
+     * @param tipo -> tipo da variavel.
+     * @param antecessor -> valor que está antes do operador
+     * @param sucessor -> valor que está após o operador
+     */
     public static Object divide(String[] valores, String tipo, int antecessor, int sucessor){
 
         if(tipo.equals("longue")){
@@ -256,6 +285,15 @@ public class Operation {
         return 0;
     }
 
+    
+    /**
+     * Opera multiplicação
+     * 
+     * @param valores -> onde está a expressão
+     * @param tipo -> tipo da variavel.
+     * @param antecessor -> valor que está antes do operador
+     * @param sucessor -> valor que está após o operador
+     */    
     public static Object multiplica(String[] valores, String tipo, int antecessor, int sucessor){
 
         if(tipo.equals("longue")){
@@ -270,6 +308,14 @@ public class Operation {
         return 0;
     }
 
+    /**
+     * Opera módulo
+     * 
+     * @param valores -> onde está a expressão
+     * @param tipo -> tipo da variavel.
+     * @param antecessor -> valor que está antes do operador
+     * @param sucessor -> valor que está após o operador
+     */    
     public static Object modula(String[] valores, String tipo, int antecessor, int sucessor){
 
         if(tipo.equals("longue")){
@@ -284,6 +330,13 @@ public class Operation {
         return 0;
     }
 
+
+    /**
+     * Opera soma entre strings
+     * 
+     * @param expressao -> onde está a expressão
+     * @param variaveis -> estrutura onde esta as variaveis
+     */
     public static String stringando(String expressao, Map<String, Variavel> variaveis) {
         String resultado = "";
         boolean check = true;
