@@ -170,7 +170,7 @@ public class Processamento {
             }
             /**Caso não for nenhuma das opções acima quer dizer eu ele passou uma variável, logo vamos trata-la */
             else {
-                //VariavelTratamento(LinhaAtual);
+                VariavelTratamento(linhaAtual);
             }
 
 
@@ -318,6 +318,54 @@ public class Processamento {
 
 
     /**
+     * Faz o tratamento de variavel
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
+    public void VariavelTratamento(String linhaAtual) {
+        String expressao = "";
+        String [] pre = new String[0];
+        String [] pos = new String[0];
+        int posicao = 0;
+
+        if (linhaAtual.indexOf("++") != -1) {
+            posicao = linhaAtual.indexOf("++");
+            pre = linhaEmArray(linhaAtual.substring(0, posicao));
+            expressao += pre[0]+"+1";
+
+        }
+        else if (linhaAtual.indexOf("--") != -1) {
+            posicao = linhaAtual.indexOf("--");
+            pre = linhaEmArray(linhaAtual.substring(0, posicao));
+            expressao += pre[0]+"-1";
+
+        } else if (linhaAtual.indexOf("=") != -1){
+            posicao = linhaAtual.indexOf("=");
+            pre = linhaEmArray(linhaAtual.substring(0, posicao));
+            pos = linhaEmArray(linhaAtual.substring(posicao+1, linhaAtual.length()));
+            for(int i = 0; i < pos.length; i++) {
+                expressao = expressao.concat(pos[i]);
+            }
+        }
+
+        Variavel aux = this.variaveis.get(pre[0]);
+         if(aux == null) {
+             /* lança exceção */
+         } 
+         else {
+             if(posicao != -1) {
+                if(aux.tipo.equals("entier")) {
+                    int resultado = (int) Operation.qualOperacao(expressao, "entier", variaveis);
+                    aux.setValeur(resultado);
+                }
+                else if(aux.tipo.equals("longue")) {
+                    double resultado = (double) Operation.qualOperacao(expressao, "longue", variaveis);
+                    aux.setValeur(resultado);
+                }
+             }
+         }  
+    }
+    /**
      * Retorna conteudo que esta entre parenteses
      * 
      * @param linhas -> vetor que procuraremos parenteses;
@@ -336,12 +384,6 @@ public class Processamento {
     }
 
 
-
-
-
-
-
-
     /**
      * Pega uma linha, retira os espaços, e coloca numa array;
      * 
@@ -358,8 +400,6 @@ public class Processamento {
         }
         return semEspacos;
     }
-
-
 
 
 

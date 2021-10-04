@@ -11,9 +11,13 @@ public class Davy {
          }
 
         String arquivo = args[0]; //o programa que a pessoa criou;
+
         Lecteur l = new Lecteur(); // para fazer a leitura do programa;
+
         l.leTudo(arquivo);    // faz a leitura e guarda em l.linhas[]
+
         Processamento p = new Processamento(l.linhas, l.qntdLinhas);
+        
         p.Processa();
 
 
