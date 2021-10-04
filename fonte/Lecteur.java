@@ -12,7 +12,9 @@ public class Lecteur {
     /**
      * Adiciona um novo elemento na array.
      * 
-     * @param novo valor que será adicionado no array novo.
+     * @param original array onde será adicionado um novo elemento.
+     * @param novo novo elemento que será adicionado.
+     * @param tamanho tamanho do array original.
      */
 
     public static String[] novaArray(String[] original, String novo, int tamanho){
@@ -38,7 +40,7 @@ public class Lecteur {
     /**
      * Faz a leitura do arquivo com o código.
      * 
-     * @param arquivo Nome do arquivo que será lido e depois passado para o vetor.
+     * @param arquivo -> nome do arquivo que será lido.
      */
     public void leTudo(String arquivo) {
 

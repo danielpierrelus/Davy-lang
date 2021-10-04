@@ -145,6 +145,7 @@ public class Processamento {
             /**------Verifica se é String **/
             else if("string".equals(tokens[0])){ //declaração de inteiro;
                 StringTratamento(linhaAtual);
+                System.out.println("pegou string");
             }
 
             /**------Verifica se é While **/
@@ -160,6 +161,7 @@ public class Processamento {
             /**------Verifica se é Print **/
             else if("imprimer".equals(tokens[0])){ //declaração de inteiro;
                 ImprimerTratamento(linhaAtual);
+                System.out.println("pegou imprimer");
             }
 
             /**------Verifica se é Scan **/
@@ -170,7 +172,7 @@ public class Processamento {
             /**Caso não for nenhuma das opções acima quer dizer eu ele passou uma variável, logo vamos trata-la */
             else {
                 System.out.println("caiu no else");
-                System.out.println(variaveis.get("var1").getValeur());
+                System.out.println(variaveis.get("z").getValeur().toString());
 
 
                 //VariavelTratamento(LinhaAtual);
