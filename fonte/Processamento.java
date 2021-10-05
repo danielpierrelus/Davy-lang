@@ -1,12 +1,12 @@
 package fonte;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Processamento {
 
-    public Variavel V[];
+    //public Variavel V[];
     public Map<String, Variavel> variaveis;
     public String Linhas[];
     public int qntdLinhas;
@@ -14,15 +14,21 @@ public class Processamento {
     /**
      * Construtor.
      * 
-     * @param Linhas Vetor que contém o programa escrito pelo Cliente.
+     * @param Linhas -> Vetor que contém o programa escrito pelo Cliente.
+     * @param qntdLinhas -> contém a quantidades de linhas do programa.
      */
-    public Processamento(String[] Linhas, int qntdLinhas){
+    public Processamento(String Linhas[], int qntdLinhas){
           this.Linhas = Linhas;
           this.qntdLinhas = qntdLinhas;
+          this.variaveis = new LinkedHashMap<>();
         };
 
 
-    public Processamento(){
+
+
+
+
+  /*   public Processamento(){
         V = new Variavel[200]; 
         };
 
@@ -107,10 +113,19 @@ public class Processamento {
             Valor [1]= VariavelLocalisation(valor[1]); // se tiver uma variavel vai retorna o valor dela
         }
         return Valor[1];
-    }
+    } */
     
 
-     public void processa(){
+
+    
+
+
+
+    /**
+     * Faz o processamento linha por linha
+     * 
+     */
+     public void Processa(){
 
         for(int i=0; i<qntdLinhas; i++) {
             String linhaAtual = Linhas[i];
@@ -144,7 +159,7 @@ public class Processamento {
 
             /**------Verifica se é Print **/
             else if("imprimer".equals(tokens[0])){ //declaração de inteiro;
-                //PrintTratamento(linhaAtual);
+                ImprimerTratamento(linhaAtual);
             }
 
             /**------Verifica se é Scan **/
@@ -153,7 +168,7 @@ public class Processamento {
             }
             /**Caso não for nenhuma das opções acima quer dizer eu ele passou uma variável, logo vamos trata-la */
             else {
-                //VariavelTratamento(LinhaAtual);
+                VariavelTratamento(linhaAtual);
             }
 
 
@@ -164,7 +179,11 @@ public class Processamento {
         }
      }
 
-
+    /**
+     * Faz o tratamento de variáveis do tipo Entier
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
      public void EntierTratamento(String linhaAtual) {
 
         /**formatos: ''entier nomeVariavel = valor''' ou ''entier nomeVariavel''' */
@@ -177,33 +196,34 @@ public class Processamento {
 
         if (posIgual != -1) { //verifica se tem o sinal de (=)
             String expressao = "";
-            String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
             String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
             
             /**Forma a expressão: */
             for (int i = 0; i<depoisDoIgual.length; i++) {
                 expressao = expressao.concat(depoisDoIgual[i]);
+
             }
-
-            
             /**Opera a expressão: */
-            //int valor = 
-
+            int valor = (int) Operation.qualOperacao(expressao, "entier", variaveis);
             inteiro = new EntierClasse(VarName, valor);
-            variaveis.put(VarName, inteiro);
         }
 
         else {
 
             inteiro = new EntierClasse(VarName);
-            variaveis.put(VarName, inteiro); //colocar na Estrutura Map que guarda todas as variáveis!
+            
         }
+        variaveis.put(inteiro.Nom, inteiro); //colocar na Estrutura Map que guarda todas as variáveis!
     }
 
 
 
     
-    
+    /**
+     * Faz o tratamento de variáveis do tipo Longue
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
     public void LongueTratamento(String linhaAtual) {
     
         /**formatos: ''longue nomeVariavel = valor''' ou ''longue nomeVariavel''' */
@@ -215,7 +235,6 @@ public class Processamento {
         
             if (posIgual != -1) {
                 String expressao = "";
-                String[] antesDoIgual = linhaEmArray(linhaAtual.substring(0, posIgual));
                 String[] depoisDoIgual = linhaEmArray(linhaAtual.substring(posIgual+1, linhaAtual.length()));
                 
                 /**Forma a expressão: */
@@ -225,21 +244,23 @@ public class Processamento {
 
                 /**Opera a expressão: */
                 
-                //double valor = 
+                double valor = (double) Operation.qualOperacao(expressao, "longue", variaveis);
                 
                 longue = new LongueClasse(VarName, valor);
-                variaveis.put(VarName, longue);
             }
 
             else {
-
                 longue = new LongueClasse(VarName);
-                variaveis.put(VarName, longue); //colocar na Estrutura Map que guarda todas as variáveis!
             }
+            variaveis.put(longue.Nom, longue); //colocar na Estrutura Map que guarda todas as variáveis!
     }
 
 
-
+    /**
+     * Faz o tratamento de variáveis do tipo String
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
     public void StringTratamento(String linhaAtual) {
 
         /**formatos: ''string nomeVariavel = valor''' ou ''string nomeVariavel''' */
@@ -252,7 +273,7 @@ public class Processamento {
             if (linhaAtual.indexOf("=") != -1) {
                 /**a expressao está em expressao[1] */
 
-                //String resultado = 
+                String resultado = (String) Operation.qualOperacao(expressao[1], "string", variaveis);
                 string = new StringClasse(VarName, resultado);
             }
 
@@ -263,7 +284,11 @@ public class Processamento {
         variaveis.put(VarName, string);
     }
 
-
+    /**
+     * Faz o tratamento de leitura do teclado
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
     public void ScanTratamento(String linhaAtual){
 
         String variavelPassada = conteudoParenteses(linhaAtual);
@@ -273,7 +298,7 @@ public class Processamento {
             Scanner scan = new Scanner(System.in);
             String valor = scan.nextLine();
 
-            if (variaveis.get(variavelPassada).tipo.equals("int")) {
+            if (variaveis.get(variavelPassada).tipo.equals("entier")) {
                 variaveis.get(variavelPassada).setValeur(Integer.parseInt(valor));
             }
             else if (variaveis.get(variavelPassada).tipo.equals("longue")) {
@@ -290,7 +315,59 @@ public class Processamento {
     }
 
 
+    /**
+     * Faz o tratamento de variavel
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
+    public void VariavelTratamento(String linhaAtual) {
+        String expressao = "";
+        String [] pre = new String[0];
+        String [] pos = new String[0];
+        int posicao = 0;
 
+        if (linhaAtual.indexOf("++") != -1) {
+            posicao = linhaAtual.indexOf("++");
+            pre = linhaEmArray(linhaAtual.substring(0, posicao));
+            expressao += pre[0]+"+1";
+
+        }
+        else if (linhaAtual.indexOf("--") != -1) {
+            posicao = linhaAtual.indexOf("--");
+            pre = linhaEmArray(linhaAtual.substring(0, posicao));
+            expressao += pre[0]+"-1";
+
+        } else if (linhaAtual.indexOf("=") != -1){
+            posicao = linhaAtual.indexOf("=");
+            pre = linhaEmArray(linhaAtual.substring(0, posicao));
+            pos = linhaEmArray(linhaAtual.substring(posicao+1, linhaAtual.length()));
+            for(int i = 0; i < pos.length; i++) {
+                expressao = expressao.concat(pos[i]);
+            }
+        }
+
+        Variavel aux = this.variaveis.get(pre[0]);
+         if(aux == null) {
+             /* lança exceção */
+         } 
+         else {
+             if(posicao != -1) {
+                if(aux.tipo.equals("entier")) {
+                    int resultado = (int) Operation.qualOperacao(expressao, "entier", variaveis);
+                    aux.setValeur(resultado);
+                }
+                else if(aux.tipo.equals("longue")) {
+                    double resultado = (double) Operation.qualOperacao(expressao, "longue", variaveis);
+                    aux.setValeur(resultado);
+                }
+             }
+         }  
+    }
+    /**
+     * Retorna conteudo que esta entre parenteses
+     * 
+     * @param linhas -> vetor que procuraremos parenteses;
+     */
     private String conteudoParenteses(String linhas) {
         int primeiroParentese = linhas.indexOf("(");
         int segundoParentese = linhas.lastIndexOf(")");
@@ -304,17 +381,14 @@ public class Processamento {
         return entreOsParenteses;
     }
 
-    //private void VariavelTratamento(String linhas);
 
-
-
-
-
-
-
-
+    /**
+     * Pega uma linha, retira os espaços, e coloca numa array;
+     * 
+     * @param linhas linha a ser tratada
+     */
     public static String[] linhaEmArray(String linhas) {
-        String palavras[] = linhas.split(" ");
+        String palavras[] = linhas.split("");
         String semEspacos[] = new String[0];
 
         for (int c = 0; c < palavras.length; c++){
@@ -326,4 +400,40 @@ public class Processamento {
     }
 
 
+
+
+/**O QUE FALTA FAZER: */
+/**
+ * - PENDANT; (LAÇO/WHILE)
+ * - OUI - SINON; (IF/ELSE)
+ * - IMPRIMER; (PRINT)
+ * - TESTAR OPERAÇÕES;
+ * - TESTAR LIRE; (SCAN)
+ * - IMPLEMENTAR OPERAÇÃO DE INCREMENTO+1 E REDUZ-1; (++,--)
+ * - LANÇAMENTO DE EXCEÇÕES;
+ * - TRATAMENTO CASO O CLIENTE PASSE UMA VARIÁVEL (ALTERAÇÃO DE VALOR DE VARIÁVEIS COM E SEM OPERAÇÃO)
+ * - RESOLVER PROBLEMA DE COMPILAÇÃO; SYMBOM NOT FOUND;
+ * 
+ */
+
+
+/**NAO ESTA PRONTO:::: */
+
+
+
+    /**
+     * Faz o tratamento de impressão na tela
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
+    public void ImprimerTratamento(String linhaAtual){
+
+        String variavelPassada = conteudoParenteses(linhaAtual);
+
+        if(variaveis.containsKey(variavelPassada)){
+
+            System.out.println(variaveis.get(variavelPassada).getValeur());
+
+        } 
+    }
 }

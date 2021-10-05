@@ -12,9 +12,10 @@ public class Lecteur {
     /**
      * Adiciona um novo elemento na array.
      * 
-     * @param novo valor que será adicionado no array novo.
+     * @param original -> array onde será adicionado um novo elemento.
+     * @param novo -> novo elemento que será adicionado.
+     * @param tamanho -> tamanho do array original.
      */
-
     public static String[] novaArray(String[] original, String novo, int tamanho){
         String[] NArray = Arrays.copyOf(original, tamanho+1);
         NArray[NArray.length-1] = novo;
@@ -38,9 +39,9 @@ public class Lecteur {
     /**
      * Faz a leitura do arquivo com o código.
      * 
-     * @param arquivo Nome do arquivo que será lido e depois passado para o vetor.
+     * @param arquivo -> nome do arquivo que será lido.
      */
-    public void LeTudo(String arquivo) {
+    public void leTudo(String arquivo) {
 
         try {
             this.linhas = new String[0];
@@ -51,8 +52,7 @@ public class Lecteur {
                 this.linhas = novaArray(this.linhas, line, this.linhas.length);
                 qntdLinhas++;
             }
-
-        input.close();
+            input.close();
 
         } catch (Exception e) {
 
@@ -62,6 +62,7 @@ public class Lecteur {
             e.printStackTrace();
 
         }
+        ImprimeLinhas();
     }
     
 }
