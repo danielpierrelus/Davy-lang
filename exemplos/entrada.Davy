@@ -1,0 +1,4 @@
+entier x
+lire (x)
+saut
+imprimerVar (x)
