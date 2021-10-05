@@ -1,5 +1,14 @@
 package fonte;
 
+
+/* Variável double */
+
+// Andrew Gabriel  (andrew.gabrielgomes@gmail.com)
+// Larissa Mones  (larissamones12@gmail.com)
+// Daniel Pierrelus  (pierrelusdaniel@gmail.com)
+// Kerby Lovince  (lovincekerby99@gmail.com)
+
+
 public class LongueClasse extends Variavel {
     public double Valeur;
 

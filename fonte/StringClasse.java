@@ -1,8 +1,17 @@
 package fonte;
 
-public class StringClasse extends Variavel{
-    public String Valeur;
 
+/* Variável String */
+
+// Andrew Gabriel  (andrew.gabrielgomes@gmail.com)
+// Larissa Mones  (larissamones12@gmail.com)
+// Daniel Pierrelus  (pierrelusdaniel@gmail.com)
+// Kerby Lovince  (lovincekerby99@gmail.com)
+
+
+public class StringClasse extends Variavel{
+
+    public String Valeur;
 
     /**
      * Construtor com inicialização de valor

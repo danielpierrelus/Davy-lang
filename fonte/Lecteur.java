@@ -1,5 +1,14 @@
 package fonte;
 
+
+/* Faz a leitura do arquivo */
+
+// Andrew Gabriel  (andrew.gabrielgomes@gmail.com)
+// Larissa Mones  (larissamones12@gmail.com)
+// Daniel Pierrelus  (pierrelusdaniel@gmail.com)
+// Kerby Lovince  (lovincekerby99@gmail.com)
+
+
 import java.io.File;
 import java.util.Scanner;
 import java.util.*;

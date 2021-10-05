@@ -1,5 +1,14 @@
 package fonte;
 
+
+/* Variável Abstrata */
+
+// Andrew Gabriel  (andrew.gabrielgomes@gmail.com)
+// Larissa Mones  (larissamones12@gmail.com)
+// Daniel Pierrelus  (pierrelusdaniel@gmail.com)
+// Kerby Lovince  (lovincekerby99@gmail.com)
+
+
 abstract class Variavel {
     
     public String tipo;

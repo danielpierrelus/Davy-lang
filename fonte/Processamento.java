@@ -1,5 +1,14 @@
 package fonte;
 
+
+/* Efetua o processamento linha a linha */
+
+// Andrew Gabriel  (andrew.gabrielgomes@gmail.com)
+// Larissa Mones  (larissamones12@gmail.com)
+// Daniel Pierrelus  (pierrelusdaniel@gmail.com)
+// Kerby Lovince  (lovincekerby99@gmail.com)
+
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -162,6 +171,11 @@ public class Processamento {
                 ImprimerTratamento(linhaAtual);
             }
 
+            /**------Verifica se é Print **/
+            else if("imprimervar".equals(tokens[0])){ //declaração de inteiro;
+                ImprimerVarTratamento(linhaAtual);
+            }
+
             /**------Verifica se é Scan **/
             else if("lire".equals(tokens[0])){ //declaração de inteiro;
                 ScanTratamento(linhaAtual);
@@ -171,9 +185,9 @@ public class Processamento {
                 VariavelTratamento(linhaAtual);
             }
 
-
             
 
+            
 
             
         }
@@ -409,10 +423,9 @@ public class Processamento {
  * - IMPRIMER; (PRINT)
  * - TESTAR OPERAÇÕES;
  * - TESTAR LIRE; (SCAN)
- * - IMPLEMENTAR OPERAÇÃO DE INCREMENTO+1 E REDUZ-1; (++,--)
  * - LANÇAMENTO DE EXCEÇÕES;
  * - TRATAMENTO CASO O CLIENTE PASSE UMA VARIÁVEL (ALTERAÇÃO DE VALOR DE VARIÁVEIS COM E SEM OPERAÇÃO)
- * - RESOLVER PROBLEMA DE COMPILAÇÃO; SYMBOM NOT FOUND;
+ * - RESOLVER PROBLEMA DE COMPILAÇÃO; SYMBOl NOT FOUND;
  * 
  */
 
@@ -423,10 +436,29 @@ public class Processamento {
 
     /**
      * Faz o tratamento de impressão na tela
+     * Imprime apenas textos entre aspas
      * 
      * @param linhaAtual -> contém a linha atual que está sendo trabalhada
      */
     public void ImprimerTratamento(String linhaAtual){
+
+        if (linhaAtual.indexOf("\"") != -1){
+            int primeira = linhaAtual.indexOf("\"");
+            int segunda = linhaAtual.indexOf("\"");
+            String conteudo = linhaAtual.substring(primeira+1, segunda);
+            System.out.println(conteudo);
+        }
+    }
+
+
+
+    /**
+     * Faz o tratamento de impressão na tela
+     * Imprime apenas variáveis.
+     * 
+     * @param linhaAtual -> contém a linha atual que está sendo trabalhada
+     */
+    public void ImprimerVarTratamento(String linhaAtual){
 
         String variavelPassada = conteudoParenteses(linhaAtual);
 

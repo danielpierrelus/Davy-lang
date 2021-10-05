@@ -1,0 +1,3 @@
+entier a
+a = 2
+imprimerVar (a)

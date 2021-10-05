@@ -1,5 +1,14 @@
 package fonte;
 
+
+/* Variável Inteira */
+
+// Andrew Gabriel  (andrew.gabrielgomes@gmail.com)
+// Larissa Mones  (larissamones12@gmail.com)
+// Daniel Pierrelus  (pierrelusdaniel@gmail.com)
+// Kerby Lovince  (lovincekerby99@gmail.com)
+
+
 public class EntierClasse extends Variavel {
 
     public int Valeur;
