@@ -13,6 +13,7 @@
 2. [**Entrada e Saída:**](#entrada-e-saída)  
     - [**lire;**](#lire)  
     - [**imprimer;**](#imprimer)  
+    - [**imprimerVar;**](#imprimerVar)  
 3. [**Operações;**](#operações)  
 4. [**Condições;**](#condições)  
 5. [**Controlador de Fluxo**](#controlador-de-fluxo)  
@@ -83,19 +84,32 @@ lire(x)
 ***
 
 ## **imprimer:**  
-Para imprimir na tela
+Para imprimir um texto entre "" (aspas) na tela
+
+
+```
+imprimer ("Hello World!")
+```
+**Saída na tela:**  
+```
+Hello World!
+```
+
+***
+
+## **imprimerVar:**  
+Para imprimir uma variável na tela
 
 
 ```
 entier x = 10
-imprimer(x)
+imprimer (x)
 ```
 **Saída na tela:**  
 ```
 10
 ```
 **OBS:** antes de usar deve-se declarar a variável;
-
 ***
 
 # **Operações**  

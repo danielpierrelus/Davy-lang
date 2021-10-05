@@ -1,1 +1,2 @@
-:)
+entier x = 10
+imprimerVar (x)
