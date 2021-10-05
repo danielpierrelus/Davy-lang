@@ -69,12 +69,17 @@ public class Processamento {
                 //IfTratamento(linhaAtual);
             }
 
-            /**------Verifica se é Print **/
+            /**------Verifica se é Salto **/
+            else if("saut".equals(tokens[0])){ //declaração de inteiro;
+                System.out.println();
+            }
+
+            /**------Verifica se é Print texto **/
             else if("imprimer".equals(tokens[0])){ //declaração de inteiro;
                 ImprimerTratamento(linhaAtual);
             }
 
-            /**------Verifica se é Print **/
+            /**------Verifica se é Print Variavel **/
             else if("imprimerVar".equals(tokens[0])){ //declaração de inteiro;
                 ImprimerVarTratamento(linhaAtual);
             }
@@ -121,6 +126,7 @@ public class Processamento {
 
             }
             /**Opera a expressão: */
+
             int valor = (int) Operation.qualOperacao(expressao, "entier", variaveis);
             inteiro = new EntierClasse(VarName, valor);
         }
@@ -323,7 +329,6 @@ public class Processamento {
 /**
  * - PENDANT; (LAÇO/WHILE)
  * - OUI - SINON; (IF/ELSE)
- * - IMPRIMER; (PRINT)
  * - TESTAR OPERAÇÕES;
  * - TESTAR LIRE; (SCAN)
  * - LANÇAMENTO DE EXCEÇÕES;
@@ -347,9 +352,9 @@ public class Processamento {
 
         if (linhaAtual.indexOf("\"") != -1){
             int primeira = linhaAtual.indexOf("\"");
-            int segunda = linhaAtual.indexOf("\"");
+            int segunda = linhaAtual.lastIndexOf("\"");
             String conteudo = linhaAtual.substring(primeira+1, segunda);
-            System.out.println(conteudo);
+            System.out.printf(conteudo);
         }
     }
 
@@ -367,7 +372,7 @@ public class Processamento {
 
         if(variaveis.containsKey(variavelPassada)){
 
-            System.out.println(variaveis.get(variavelPassada).getValeur());
+            System.out.print(variaveis.get(variavelPassada).getValeur());
 
         } 
     }

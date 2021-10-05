@@ -1,2 +1,14 @@
 entier x = 10
 imprimerVar (x)
+entier var = 10
+saut
+imprimer ("Andrew gabriel gomes")
+saut
+lire (x)
+saut
+imprimer ("O valor da variavel X era =  ")
+imprimerVar (var)
+saut
+imprimer ("O valor da variavel X agora e =  ")
+imprimerVar (x)
+saut
